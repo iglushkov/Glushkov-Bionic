@@ -6,13 +6,11 @@ public class Main {
         //HomeTask_1(BinarySearch)
 
         BinarySearch binarySearch = new BinarySearch();
-
         BinarySearch.binary();
 
         //HomeTask_2(ASCII)
 
         ASCII ascii = new ASCII();
-
         ascii.encryptingDecrypting();
 
         //HomeTask_3(Ceasar)

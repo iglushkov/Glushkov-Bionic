@@ -9,20 +9,28 @@ public class Ceasar {
 
             Scanner scanner = new Scanner(System.in);
             System.out.println("Ceasar. Please, type text to encrypt (string): ");
+
             String text = scanner.nextLine();                       //шифруемый текст
+
             System.out.println("Encrypt key (int): ");
             int k = scanner.nextInt();
+
             StringBuilder textEncrypted = encryptCeasar(text, k);
             System.out.println("Encrypted text: " + textEncrypted);
+
             StringBuilder textDecrypted = decryptCeasar(textEncrypted.toString(), k);
             System.out.println("Decrypted text: " + textDecrypted);
 
         }
 
         public static StringBuilder encryptCeasar(String textToEncrypt, int key) {
+
             StringBuilder sb = new StringBuilder();                 // шифруем строку
+
             for (int i = 0; i < textToEncrypt.length(); i++) {
+
                 char ch = textToEncrypt.charAt(i);
+
                 if (ch == ' ') {
                     sb.append(' ');
                 } else {
@@ -33,9 +41,13 @@ public class Ceasar {
         }
 
         public static StringBuilder decryptCeasar(String textToDecrypt, int key) {
+
             StringBuilder sb = new StringBuilder();                            // дешифруем строку
+
             for (int i = 0; i < textToDecrypt.length(); i++) {
+
                 char ch = textToDecrypt.charAt(i);
+
                 if (ch == ' ') {
                     sb.append(' ');
                 } else {

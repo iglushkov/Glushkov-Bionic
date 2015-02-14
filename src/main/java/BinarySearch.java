@@ -5,7 +5,7 @@ public class BinarySearch {
 
         int[] arr = { 5, 22, 23, 43, 56, 62, 63, 70, 72, 125 };
 
-        System.out.println("Binary. Элемент под индексом " + indx(56, arr));     // вводим искомое число из массива
+        System.out.println("Binary. Элемент под индексом " + indx(56, arr));// вводим искомое число из массива
     }
 
     public static int indx(int value, int[] arr) {

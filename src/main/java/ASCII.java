@@ -8,11 +8,9 @@ public class ASCII {
         int length = str.length();
         int[] encr = new int[length];
 
-
         for (int i = 0; i < length; i++) {
             encr[i] = (int) str.charAt(i);
         }
-
 
         String decr = "";
 
