@@ -9,7 +9,7 @@ package test;
 public class regExp1 {
 
     @Test
-    public void stringTest() throws IOException {
+    public void RegExp() throws IOException {
 
         String infa = new String(Files.readAllBytes(Paths.get("/Users/admin/Documents/Java_projects/Bionic-QS8/src/main/java/test/test2.txt")));
 
