@@ -1,4 +1,4 @@
-package test;
+package homeTask;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,7 +13,7 @@ public class PoiskAssert {
 
         String b = "JustSomeText";
 
-        String a = new String(Files.readAllBytes(Paths.get("/Users/admin/Documents/Java_projects/Bionic-QS8/src/main/java/test/test1.txt")));
+        String a = new String(Files.readAllBytes(Paths.get("/Users/admin/Documents/Java_projects/Bionic-QS8/src/test/resources/test1.txt")));
 
         Assert.assertTrue(a.contentEquals(b));
     }
