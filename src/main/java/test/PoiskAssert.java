@@ -17,5 +17,5 @@ public class PoiskAssert {
 
         Assert.assertTrue(a.contentEquals(b));
     }
-    
+
 }
