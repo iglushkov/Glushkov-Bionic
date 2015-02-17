@@ -7,6 +7,7 @@
         <classes>
             <class name="homeTask.PoiskAssert" />
             <class name="homeTask.regExp1" />
+            <class name="homeTask.BeforeAfter" />
         </classes>
     </test>
 </suite>
