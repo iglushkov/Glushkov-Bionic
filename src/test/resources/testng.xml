@@ -5,10 +5,8 @@
 
     <test name="SmokeTest">
         <classes>
-            <class name="homeTask.PoiskAssert" />
-            <class name="homeTask.regExp1" />
-            <class name="homeTask.BeforeAfter" />
-            <class name="TestingOLX.Olx"/>
+
+            <class name="functional.FilteringTest"/>
         </classes>
     </test>
 </suite>

@@ -1,13 +1,13 @@
-package pages;
+package Page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Home {
+public class HomePage1 {
 
     WebDriver browser;
 
-    public Home(WebDriver driver) {
+    public HomePage1(WebDriver driver) {
 
         this.browser = driver;
     }
