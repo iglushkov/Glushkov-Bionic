@@ -8,6 +8,7 @@
             <class name="homeTask.PoiskAssert" />
             <class name="homeTask.regExp1" />
             <class name="homeTask.BeforeAfter" />
+            <class name="TestingOLX.Olx"/>
         </classes>
     </test>
 </suite>
