@@ -1,21 +1,30 @@
 package functional;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import webdriver.Browser;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 public class AbstractTest {
-    public WebDriver driver;
+    public Browser driver;
 
     @BeforeSuite
-    public void initEnv() {
-        driver = new FirefoxDriver();
+    public void initEnv()
+    {
+        File file = new File("/Users/admin/Applications/chromedriver");
+        System.setProperty("webdriver.chrome.driver",file.getAbsolutePath());
+        driver = new Browser(new ChromeDriver());
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-    @AfterSuite
-    public void shutEnv() {
 
+    @AfterSuite
+    public void shutEnv()
+    {
         if (driver != null)
-        driver.quit();
+            driver.quit();
     }
 }

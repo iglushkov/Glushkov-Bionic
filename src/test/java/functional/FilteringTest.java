@@ -15,6 +15,25 @@ public class FilteringTest extends AbstractTest{
         openDetskayaOdezhda();
     }
 
+    @Test
+    public void priceFilterTest()
+    {
+        openDetskiyMir();
+        openDetskayaOdezhda();
+        sortByNew();
+    }
+
+    public void stateFilterTest ()
+    {
+
+    }
+
+    public void sortByNew()
+    {
+        ChildDressPage childDressPage = new ChildDressPage(driver);
+        Assert.assertTrue(childDressPage.sortByNew(), "Sorted by new ");
+    }
+
     public void openDetskiyMir()
     {
         HomePage homePage = new HomePage(driver);
@@ -34,13 +53,4 @@ public class FilteringTest extends AbstractTest{
 
 
 
-    public void priceFilterTest()
-    {
-
-    }
-
-    public void stateFilterTest ()
-    {
-
-    }
 }

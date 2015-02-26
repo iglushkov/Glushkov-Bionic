@@ -1,14 +1,12 @@
-
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
+import webdriver.Browser;
 
 public class ChildPage extends AbstractPage{
     private static final By openDetskayaOdezhdaLink = By.id("cat-539");
 
-    public ChildPage(WebDriver driver) {
+    public ChildPage(Browser driver) {
         super(driver);
     }
 

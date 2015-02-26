@@ -1,12 +1,20 @@
-
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import webdriver.Browser;
 
 public class HomePage extends AbstractPage{
 
-    public HomePage(WebDriver driver)
+    private static final By childWorldLink = By.cssSelector("a[data-code='detskiy-mir']");
+
+
+    @FindBy(css = "a[data-code='detskiy-mir']")
+    WebElement childPageLink;
+
+
+    public HomePage(Browser driver)
     {
         super(driver);
     }
@@ -18,7 +26,7 @@ public class HomePage extends AbstractPage{
 
     public void openDetskiyMir()
     {
-        driver.findElement(By.cssSelector("a[data-code='detskiy-mir']")).click();
+        driver.findElement(childWorldLink).click();
     }
 
 }
