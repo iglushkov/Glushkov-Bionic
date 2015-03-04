@@ -3,22 +3,24 @@ package webdriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.rmi.server.ExportException;
 import java.util.List;
 import java.util.Set;
 
-public class Browser implements WebDriver{
+public class Browser implements WebDriver {
     public WebDriver driver;
 
-    public Browser(WebDriver driver) {
+    public Browser(WebDriver driver){
         this.driver = driver;
     }
 
     @Override
-    public void get(String s) {
-        driver.get(s);
+    public void get(String s) { driver.get(s);
+
     }
 
     @Override
@@ -34,14 +36,14 @@ public class Browser implements WebDriver{
     @Override
     public List<WebElement> findElements(By by) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(by));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
         return driver.findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(by));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
         return driver.findElement(by);
     }
 
@@ -51,11 +53,13 @@ public class Browser implements WebDriver{
     }
 
     @Override
-    public void close() {driver.close();}
+    public void close() { driver.close();
+
+    }
 
     @Override
-    public void quit() {
-        driver.quit();
+    public void quit() {driver.quit();
+
     }
 
     @Override

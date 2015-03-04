@@ -1,11 +1,15 @@
 package pages;
 
-import webdriver.Browser;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-public class AbstractPage {
-    protected Browser driver;
+public abstract class AbstractPage {
+    protected  WebDriver driver;
 
-    public AbstractPage(Browser driver) {
+    public AbstractPage(WebDriver driver){
         this.driver = driver;
     }
+
+    public abstract boolean isOpened();
+
 }

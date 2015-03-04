@@ -1,6 +1,5 @@
 package utils;
 
-import org.testng.Assert;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -14,7 +13,7 @@ public class PropertyLoader {
         try {
             props.load(PropertyLoader.class.getResourceAsStream(PROPERTY_FILE));
         } catch (IOException e) {
-            Assert.fail(e.toString());
+            e.printStackTrace();
         }
         String value = "";
         if (name != null)

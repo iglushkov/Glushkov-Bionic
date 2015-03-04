@@ -1,32 +1,32 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import webdriver.Browser;
+import org.openqa.selenium.WebDriver;
 
-public class HomePage extends AbstractPage{
+public class HomePage extends AbstractPage {
+    private static final By HOME_PAGE_LINK = By.xpath(".//*[@id='body-container']/div/div/div[2]/div/p[1]");
 
-    private static final By childWorldLink = By.cssSelector("a[data-code='detskiy-mir']");
-
-
-    @FindBy(css = "a[data-code='detskiy-mir']")
-    WebElement childPageLink;
-
-
-    public HomePage(Browser driver)
-    {
+    public HomePage (WebDriver driver){
         super(driver);
     }
 
-    public void open()
-    {
-        driver.get("http://olx.ua/uk/");
+    @Override
+    public boolean isOpened() {
+        return driver.findElement(HOME_PAGE_LINK).isDisplayed();
     }
 
-    public void openDetskiyMir()
-    {
-        driver.findElement(childWorldLink).click();
+    public HomePage open(){
+        driver.get("http://olx.ua/");
+        return this;
     }
 
+    public ChildWorldPage openKidsWorld() {
+        driver.findElement(By.cssSelector("a[data-code='detskiy-mir']")).click();
+        return new ChildWorldPage(driver);
+    }
+
+    public CreateAdPage openCreateAd(){
+        driver.findElement(By.xpath(".//*[@id='postNewAdLink']")).click();
+        return new CreateAdPage(driver);
+    }
 }
