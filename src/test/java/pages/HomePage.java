@@ -1,32 +1,34 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import webdriver.Browser;
 
-public class HomePage extends AbstractPage {
-    private static final By HOME_PAGE_LINK = By.xpath(".//*[@id='body-container']/div/div/div[2]/div/p[1]");
+public class HomePage extends AbstractPage{
 
-    public HomePage (WebDriver driver){
+    private static final By childWorldLink = By.cssSelector("a[data-code='detskiy-mir']");
+    private static final By addNewAdvertLink = new By.ByXPath("//*[@id=\"postNewAdLink\"]/span");
+
+    @FindBy(css = "a[data-code='detskiy-mir']")
+    WebElement childPageLink;
+
+
+    public HomePage(Browser driver) {
         super(driver);
     }
 
-    @Override
-    public boolean isOpened() {
-        return driver.findElement(HOME_PAGE_LINK).isDisplayed();
+
+    public void open() {
+        driver.get("http://olx.ua/uk/");
     }
 
-    public HomePage open(){
-        driver.get("http://olx.ua/");
-        return this;
+    public void openAddNewAdvert(){
+        driver.findElement(addNewAdvertLink).click();
     }
 
-    public ChildWorldPage openKidsWorld() {
-        driver.findElement(By.cssSelector("a[data-code='detskiy-mir']")).click();
-        return new ChildWorldPage(driver);
+    public void openDetskiyMir() {
+        driver.findElement(childWorldLink).click();
     }
 
-    public CreateAdPage openCreateAd(){
-        driver.findElement(By.xpath(".//*[@id='postNewAdLink']")).click();
-        return new CreateAdPage(driver);
-    }
 }
