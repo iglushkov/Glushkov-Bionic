@@ -12,6 +12,7 @@ public class Advertisement {
     public String email = DataGenerator.getRandomEmail();
     public int size = DataGenerator.getRandomInt(90);
 
+
     private static String getDefaultPhotoPath()
     {
         String projectPath = PropertyLoader.loadProperty("project.path");

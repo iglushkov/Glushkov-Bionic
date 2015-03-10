@@ -26,8 +26,4 @@ public class AdvertisementPage extends AbstractPage {
         driver.findElement(email).sendKeys(adv.email);
     }
 
-    public boolean isError() {
-        return false;
-    }
-
 }

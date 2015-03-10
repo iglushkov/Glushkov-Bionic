@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import Page.HomePage1;
+import pages.HomePage1;
 
 public class Olx {
 

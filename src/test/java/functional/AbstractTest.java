@@ -17,23 +17,27 @@ public class AbstractTest {
     @BeforeSuite
     public void initEnv() {
 
-        PropertyLoader.loadProperty("browser").equals("chrome");
+       /* PropertyLoader.loadProperty("browser").equals("chrome");
             File file = new File("/Users/admin/Applications/chromedriver");
             System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
             browser = new Browser(new ChromeDriver());
+
             browser.manage().window().maximize();
             browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        }
-   /*
-     if (PropertyLoader.loadProperty("browser").equals("firefox"))
+       */
+
+        if (PropertyLoader.loadProperty("browser").equals("firefox"))
             browser = new Browser(new FirefoxDriver());
         else if (PropertyLoader.loadProperty("browser").equals("chrome")) {
             File file = new File("/Users/admin/Applications/chromedriver");
             System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
             browser = new Browser(new ChromeDriver());
         }
-    */
+        browser.manage().window().maximize();
+        browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
     @AfterSuite
     public void shutEnv() {
 
