@@ -1,22 +1,31 @@
 package entities;
-import utils.DataGenerator;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import utils.PropertyLoader;
 
-import java.io.File;
-
 public class Advertisement {
-    public String title = DataGenerator.getRandomString(6);
-    public String description = DataGenerator.getRandomString(60);
-    public String photoUrl = new File(getDefaultPhotoPath()).getAbsolutePath();
-    public String name = DataGenerator.getRandomString(10);
-    public String email = DataGenerator.getRandomEmail();
-    public int size = DataGenerator.getRandomInt(90);
 
+    public String imagePath = PropertyLoader.loadProperty("project.path") + "/src/test/resources/image.jpg";
+    public String title = "";
+    public String itemPrice = "";
+    public String description = "";
+    public String contactPerson = "";
+    public String email = "";
 
-    private static String getDefaultPhotoPath()
-    {
-        String projectPath = PropertyLoader.loadProperty("project.path");
-        String filePath = "/src/test/resources/image.jpg";
-        return projectPath + filePath;
+    public Advertisement(Boolean correct) {
+        if (correct) {
+            title = RandomStringUtils.randomAlphabetic(5).toLowerCase();
+            itemPrice = RandomStringUtils.randomNumeric(3);
+            description = RandomStringUtils.randomAlphabetic(50).toLowerCase();
+            contactPerson = RandomStringUtils.randomAlphabetic(5).toLowerCase();
+            email = RandomStringUtils.randomAlphabetic(5).toLowerCase() + "@ukr.net";
+        } else {
+            title = RandomStringUtils.randomAlphabetic(4).toLowerCase();
+            itemPrice = RandomStringUtils.randomNumeric(14);
+            description = RandomStringUtils.randomAlphabetic(49).toLowerCase();
+            contactPerson = RandomStringUtils.randomAlphabetic(1).toLowerCase();
+            email = RandomStringUtils.randomAlphabetic(5).toLowerCase();
+        }
     }
+
 }

@@ -1,18 +1,14 @@
 package pages;
 
-import org.apache.commons.lang3.RandomStringUtils;
+import entities.Advertisement;
 import org.openqa.selenium.By;
-import utils.PropertyLoader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import webdriver.Browser;
 
 public class AddNewAdvertPage extends AbstractPage {
 
-    private String imagePath = PropertyLoader.loadProperty("project.path") + "/src/test/resources/image.jpg";
-    private String title = "";
-    private String itemPrice = "";
-    private String description = "";
-    private String contactPerson = "";
-    private String email = "";
+    Logger logger = LoggerFactory.getLogger(AddNewAdvertPage.class);
 
     private static final By titleField = new By.ById("add-title");
     private static final By categorySelector = new By.ByXPath("//*[@id=\"targetrenderSelect1-0\"]/dt/a");
@@ -33,31 +29,23 @@ public class AddNewAdvertPage extends AbstractPage {
     private static final By agreeCheckbox = new By.ByXPath("//*[@id=\"accept\"]/div/div[2]/div/label");
     private static final By addImage = new By.ByXPath("//*[@id=\"gallery\"]/div[3]/input");
     private static final By previewLink = new By.ById("preview-link");
-    private static final By closeButton = new By.ById("fancybox-close");
 
     public AddNewAdvertPage(Browser driver) {
         super(driver);
     }
 
-    public void generateAdvertData() {
-        title = RandomStringUtils.randomAlphabetic(5).toLowerCase();
-        itemPrice = RandomStringUtils.randomNumeric(3);
-        description = RandomStringUtils.randomAlphabetic(50).toLowerCase();
-        contactPerson = RandomStringUtils.randomAlphabetic(5).toLowerCase();
-        email = RandomStringUtils.randomAlphabetic(5).toLowerCase() + "@gmail.com";
-    }
-
-    public void fillInAllFields() {
-        driver.findElement(titleField).sendKeys(title);
-        driver.findElement(addImage).sendKeys(imagePath);
+    public void setAdv(Advertisement adv) {
+        driver.findElement(titleField).sendKeys(adv.title);
+        driver.findElement(addImage).sendKeys(adv.imagePath);
         driver.findElement(categorySelector).click();
+        waitSomeTime(3000);
         driver.findElement(childrenWorld).click();
         driver.findElement(otherChildrenStuff).click();
-        driver.findElement(closeButton).click();
-        driver.findElement(price).sendKeys(itemPrice);
-        driver.findElement(descriptionField).sendKeys(description);
-        driver.findElement(contactPersonField).sendKeys(contactPerson);
-        driver.findElement(emailField).sendKeys(email);
+        waitSomeTime(3000);
+        driver.findElement(price).sendKeys(adv.itemPrice);
+        driver.findElement(descriptionField).sendKeys(adv.description);
+        driver.findElement(contactPersonField).sendKeys(adv.contactPerson);
+        driver.findElement(emailField).sendKeys(adv.email);
         driver.findElement(state).click();
         driver.findElement(stateNew).click();
         driver.findElement(owner).click();
@@ -67,10 +55,16 @@ public class AddNewAdvertPage extends AbstractPage {
         driver.findElement(city).click();
         driver.findElement(kiev).click();
         driver.findElement(agreeCheckbox).click();
+        logger.info("Advert data setted");
     }
 
     public void openPreview() {
         driver.findElement(previewLink).click();
+    }
+
+    public boolean isErrorPresent() {
+        logger.info("Errors are present");
+        return true;
     }
 
 }

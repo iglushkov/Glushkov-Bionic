@@ -1,48 +1,24 @@
 package functional;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import utils.PropertyLoader;
 import webdriver.Browser;
-
-import java.io.File;
-import java.util.concurrent.TimeUnit;
+import webdriver.BrowserFactory;
 
 public class AbstractTest {
 
     public Browser browser;
 
-    @BeforeSuite
+    @BeforeClass
     public void initEnv() {
-
-       /* PropertyLoader.loadProperty("browser").equals("chrome");
-            File file = new File("/Users/admin/Applications/chromedriver");
-            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-            browser = new Browser(new ChromeDriver());
-
-            browser.manage().window().maximize();
-            browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-       */
-
-        if (PropertyLoader.loadProperty("browser").equals("firefox"))
-            browser = new Browser(new FirefoxDriver());
-        else if (PropertyLoader.loadProperty("browser").equals("chrome")) {
-            File file = new File("/Users/admin/Applications/chromedriver");
-            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-            browser = new Browser(new ChromeDriver());
-        }
-        browser.manage().window().maximize();
-        browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        browser = BrowserFactory.create(PropertyLoader.loadProperty("browser"));
     }
 
-    @AfterSuite
+    @AfterClass
     public void shutEnv() {
-
         if (browser != null)
             browser.quit();
+    }
 
-        }
 }

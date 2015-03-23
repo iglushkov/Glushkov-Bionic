@@ -1,5 +1,6 @@
 package pages;
 
+
 import webdriver.Browser;
 
 public class AbstractPage {
@@ -10,5 +11,12 @@ public class AbstractPage {
         this.driver = driver;
     }
 
+    public static void waitSomeTime(Integer time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

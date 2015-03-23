@@ -1,0 +1,1 @@
+java -jar selenium-server-standalone.jar -role node -nodeConfig nodeconfig.json  REM -browser browserName=firefox,maxInstances=5 -hub http://localhost:9999/grid/register
